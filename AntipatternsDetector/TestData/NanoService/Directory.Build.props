@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <PackageReference Include="AntipatternsDetector" Version="1.0.1" />
+  </ItemGroup>
+</Project>
