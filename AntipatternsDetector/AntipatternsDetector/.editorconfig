@@ -1,0 +1,20 @@
+##########################################
+# Common Settings
+##########################################
+
+# This file is the top-most EditorConfig file
+root = true
+
+##########################################
+# Code quality
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/
+##########################################
+
+# .NET Design rules
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/design-warnings
+[*.{cs,csx}]
+# Treat CS0612 warnings as errors
+dotnet_diagnostic.CS0612.severity = error
+
+[*.g.cs]
+generated_code = true
