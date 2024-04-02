@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IsPackable>true</IsPackable>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+
+        <RootNamespace>AntipatternsDetector</RootNamespace>
+        <AssemblyName>AntipatternsDetector</AssemblyName>
+        <Version>1.0.7</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.7.0"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.7.0"/>
+<!--        <PackageReference Include="FluentAssertions" Version="6.12.0" />-->
+<!--        <PackageReference Include="TngTech.ArchUnitNET" Version="0.10.6" />-->
+<!--        <PackageReference Include="xunit" Version="2.7.0" />-->
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="AntipatternsDetector.props" Pack="true" PackagePath="\build" />
+        <None Include=".editorconfig" Pack="true" PackagePath="\content\Rules" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="$(OutDir)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntipatternsDetector", "AntipatternsDetector\AntipatternsDetector\AntipatternsDetector.csproj", "{91C661F1-00A2-4CF7-AA01-F1E9A8F488AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntipatternsDetector.Sample", "AntipatternsDetector\AntipatternsDetector.Sample\AntipatternsDetector.Sample.csproj", "{CD50E684-F140-4300-A920-179FFE4B3DB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntipatternsDetector.Tests", "AntipatternsDetector\AntipatternsDetector.Tests\AntipatternsDetector.Tests.csproj", "{ABB12876-D7A0-4262-831D-6D33182A0214}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "AntipatternsDetector\ConsoleApplication\ConsoleApplication.csproj", "{A189FF85-B31D-4A12-B439-1FC15F628D5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91C661F1-00A2-4CF7-AA01-F1E9A8F488AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C661F1-00A2-4CF7-AA01-F1E9A8F488AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C661F1-00A2-4CF7-AA01-F1E9A8F488AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C661F1-00A2-4CF7-AA01-F1E9A8F488AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD50E684-F140-4300-A920-179FFE4B3DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD50E684-F140-4300-A920-179FFE4B3DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD50E684-F140-4300-A920-179FFE4B3DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD50E684-F140-4300-A920-179FFE4B3DB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB12876-D7A0-4262-831D-6D33182A0214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB12876-D7A0-4262-831D-6D33182A0214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB12876-D7A0-4262-831D-6D33182A0214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB12876-D7A0-4262-831D-6D33182A0214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A189FF85-B31D-4A12-B439-1FC15F628D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A189FF85-B31D-4A12-B439-1FC15F628D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A189FF85-B31D-4A12-B439-1FC15F628D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A189FF85-B31D-4A12-B439-1FC15F628D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
