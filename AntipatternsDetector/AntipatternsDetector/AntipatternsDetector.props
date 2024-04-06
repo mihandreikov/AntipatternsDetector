@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+  <ItemGroup>
+    <EditorConfigFilesToCopy Include="$(MSBuildThisFileDirectory)../content/Rules/.editorconfig"/>
+  </ItemGroup>
+  <Target Condition="exists($(SolutionDir))" Name="CopyEditorConfig" BeforeTargets="BeforeBuild">
+    <Message Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionFolder)'"/>
+    <Copy
+          SourceFiles="@(EditorConfigFilesToCopy)"
+          DestinationFolder="$(SolutionDir)"
+          SkipUnchangedFiles="true"
+          UseHardlinksIfPossible="false"/>
+  </Target>
+</Project>

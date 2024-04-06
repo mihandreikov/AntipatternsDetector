@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>AntipatternDetector</id>
+    <version>0.10.0</version>
+    <title>Antipattern detector</title>
+    <authors>Mikhail</authors>
+    <owners>Mikhail</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description></description>
+    <copyright></copyright>
+  </metadata>
+
+</package>
