@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace Cian.CodeAnalysis.Helpers
+namespace AntipatternsDetector.Helpers
 {
     /// <summary>
     ///     Custom created type

@@ -16,7 +16,7 @@ namespace ConsoleApplication
             
             using (var workspace = MSBuildWorkspace.Create())
             {
-                var project = await workspace.OpenProjectAsync(@"C:\src\thesis\Blogifier\src\Blogifier.Admin\Blogifier.Admin.csproj");
+                var project = await workspace.OpenProjectAsync(@"C:\src\thesis\Blogifier\src\Blogifier\Blogifier.csproj");
                 var compilation = await project.GetCompilationAsync();
                 var compilationWithAnalyzersOptions = new CompilationWithAnalyzersOptions(
                     options: default,
