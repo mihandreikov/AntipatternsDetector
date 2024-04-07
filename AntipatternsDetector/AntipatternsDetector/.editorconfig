@@ -13,7 +13,7 @@ root = true
 # .NET Design rules
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/design-warnings
 [*.{cs,csx}]
-# Treat CS0612 warnings as errors
+# Treat CS0612 (marked obsolete) warnings as errors
 dotnet_diagnostic.CS0612.severity = error
 
 [*.g.cs]
