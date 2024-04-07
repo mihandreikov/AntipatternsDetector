@@ -6,8 +6,6 @@ A set of analyzers which detect common antipatterns in C# code. The analyzers ar
 ### AntipatternsDetector
 A .NET Standard project with implementations of sample analyzers and code fix providers.
 
-- [NanoServiceAnalyzer.cs](Analyzers\NanoServiceAnalyzer.cs): An analyzer that analyze project on how much API they have. If the API is less than 2, it will report an error.
-
 ### AntipatternsDetector.Tests
 Unit and integration tests for the analyzers.
 
