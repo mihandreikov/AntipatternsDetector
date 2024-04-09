@@ -5,6 +5,22 @@ namespace AntipatternsDetector.Helpers;
 
 public static class TypeHelper
 {
+    public static bool DerivesFrom(this ITypeSymbol typeSymbol, KnownType type)
+    {
+        var currentType = typeSymbol;
+        while (currentType != null)
+        {
+            if (currentType.Is(type))
+            {
+                return true;
+            }
+
+            currentType = currentType.BaseType?.ConstructedFrom;
+        }
+
+        return false;
+    }
+    
     public static bool Implements(this ITypeSymbol typeSymbol, ITypeSymbol type)
     {
         return typeSymbol != null &&

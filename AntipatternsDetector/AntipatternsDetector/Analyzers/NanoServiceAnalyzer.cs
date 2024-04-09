@@ -1,5 +1,7 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
+using AntipatternsDetector.Helpers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -19,37 +21,37 @@ namespace AntipatternsDetector.Analyzers
 
         private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat,
             Category, DiagnosticSeverity.Warning, true, Description);
+        
+        private static readonly KnownType ControllerType = new KnownType("Microsoft.AspNetCore.Mvc.ControllerBase");
+        private static readonly KnownType RouteTemplateProviderInterface = new KnownType("Microsoft.AspNetCore.Mvc.Routing.IRouteTemplateProvider");
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
+        
+        private static int TotalApiCount = 0;
 
         public override void Initialize(AnalysisContext context)
         {
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.ReportDiagnostics);
-            context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.ClassDeclaration);
+            context.RegisterSymbolAction(AnalyzeNode, SymbolKind.NamedType);
             context.RegisterCompilationAction(OnCompilationFinished);
         }
-        
-        private static int TotalApiCount = 0;
 
-        private void AnalyzeNode(SyntaxNodeAnalysisContext context)
+        private void AnalyzeNode(SymbolAnalysisContext context)
         {
-            var classDeclaration = (ClassDeclarationSyntax) context.Node;
-
-            var hasApiControllerAttribute = classDeclaration.AttributeLists
-                .SelectMany(list => list.Attributes)
-                .Any(attribute => attribute.Name.ToString() == "ApiController");
-
-            if (hasApiControllerAttribute)
+            if (context.IsGeneratedCode)
+                return;
+            
+            var classSymbol = (INamedTypeSymbol) context.Symbol;
+            if (classSymbol.DerivesFrom(ControllerType) == false)
             {
-                // Count the number of methods in the class
-                var methodCount = classDeclaration.Members
-                    .OfType<MethodDeclarationSyntax>()
-                    .Count(x => x.Modifiers.Any(SyntaxKind.PublicKeyword));
-
-                // Increment the total API count
-                TotalApiCount += methodCount;
+                return;
             }
+            
+            var methodCount = classSymbol.GetMembers().Count(x => x.GetAttributes().Any(y => y.AttributeClass?.Implements(RouteTemplateProviderInterface) == true));
+
+            TotalApiCount += methodCount;
         }
+
 
         private void OnCompilationFinished(CompilationAnalysisContext context)
         {
