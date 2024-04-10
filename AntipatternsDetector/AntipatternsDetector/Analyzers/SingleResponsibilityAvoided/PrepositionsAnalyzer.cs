@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -13,7 +14,7 @@ public class PrepositionsAnalyzer : DiagnosticAnalyzer
     public const string DiagnosticId = "AP_4";
 
     private const string Title = "'And' or 'or' contains in class.";
-    private const string MessageFormat = "'And' or 'or' contains in class.";
+    private const string MessageFormat = "'And' or 'or' contains in method/class '{0}'.";
     private const string Description = "'And' or 'or' contains in class.";
     private const string Category = "Complexity";
 
@@ -22,7 +23,7 @@ public class PrepositionsAnalyzer : DiagnosticAnalyzer
 
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
     
-    private const int MaxInjectionCount = 10;
+    private Regex regex = new Regex(@".*[a-z0-9]((Or)|(And))[A-Z0-9].*", RegexOptions.Compiled);
     
     public override void Initialize(AnalysisContext context)
     {
@@ -37,7 +38,7 @@ public class PrepositionsAnalyzer : DiagnosticAnalyzer
     private void AnalyzeNode(SyntaxNodeAnalysisContext context)
     {
         var name = GetName(context.Node);
-        if (name.Contains("And") || name.Contains("Or"))
+        if (regex.IsMatch(name))
         {
             var diagnostic = Diagnostic.Create(Rule, context.Node.GetLocation(), name);
             context.ReportDiagnostic(diagnostic);

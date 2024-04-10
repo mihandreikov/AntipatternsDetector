@@ -12,7 +12,7 @@ public class MonolithInMicroserviceAnalyzer : DiagnosticAnalyzer
     public const string DiagnosticId = "AP_2";
 
     private const string Title = "Solution too big. Consider splitting it into many microservices.";
-    private const string MessageFormat = "Solution too big. Consider splitting it into many microservices.";
+    private const string MessageFormat = "Solution too big. Consider splitting it into many microservices. {0} lines found, {1} allowed.";
     private const string Description = "Solution too big. Consider splitting it into many microservices.";
     private const string Category = "Size";
 

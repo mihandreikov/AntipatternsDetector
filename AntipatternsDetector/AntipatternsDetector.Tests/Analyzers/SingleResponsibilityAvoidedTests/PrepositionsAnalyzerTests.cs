@@ -48,8 +48,11 @@ public class PrepositionsAnalyzerTests : DiagnosticVerifier
         await VerifyDiagnosticsAsync(test, expected);
     }
     
-    [Fact]
-    public async Task MethodWithoutPreposition_ShouldSkip()
+    [Theory]
+    [InlineData("GetGeoTree")]
+    [InlineData("GetOrdersAsync")]
+    [InlineData("GetAnderson")]
+    public async Task MethodWithoutPreposition_ShouldSkip(string methodName)
     {
         var test = @"
     using Microsoft.AspNetCore.Mvc;
@@ -62,7 +65,7 @@ public class PrepositionsAnalyzerTests : DiagnosticVerifier
             /// Method Test
             /// </summary>
             [Route(""v1/get-geo-tree/"")]
-            void GetGeoGeoTree()
+            void " + methodName + @"()
             {
                 var a = new int[1000];
                 a[0] = 0;
